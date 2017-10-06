@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   23:01:19 09/28/2017
+-- Create Date:   16:29:25 10/05/2017
 -- Design Name:   
--- Module Name:   C:/Users/equipo/Desktop/arquitectura/project/DataPath_tb.vhd
--- Project Name:  project
+-- Module Name:   C:/Users/equipo/Desktop/arquitectura/seu/seu_tb.vhd
+-- Project Name:  seu
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: DataPath
+-- VHDL Test Bench Created by ISE for module: seu
 -- 
 -- Dependencies:
 -- 
@@ -32,54 +32,47 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY DataPath_tb IS
-END DataPath_tb;
+ENTITY seu_tb IS
+END seu_tb;
  
-ARCHITECTURE behavior OF DataPath_tb IS 
+ARCHITECTURE behavior OF seu_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT DataPath
+    COMPONENT seu
     PORT(
-         clk : IN  std_logic;
-         rst : IN  std_logic;
-         instruction : OUT  std_logic_vector(31 downto 0)
+         imm : IN  std_logic_vector(12 downto 0);
+         data_out : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal clk : std_logic := '0';
-   signal rst : std_logic := '0';
+   signal imm : std_logic_vector(12 downto 0) := (others => '0');
 
  	--Outputs
-   signal instruction : std_logic_vector(31 downto 0);
-
-   -- Clock period definitions
-   constant clk_period : time := 20 ns;
+   signal data_out : std_logic_vector(31 downto 0);
+   -- No clocks detected in port list. Replace <clock> below with 
+   -- appropriate port name 
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: DataPath PORT MAP (
-          clk => clk,
-          rst => rst,
-          instruction => instruction
+   uut: seu PORT MAP (
+          imm => imm,
+          data_out => data_out
         );
-
-   -- Clock process definitions
-   clk_process :process
-   begin
-		clk <= '0';
-		wait for clk_period/2;
-		clk <= '1';
-		wait for clk_period/2;
-   end process;
- 
 
    -- Stimulus process
    stim_proc: process
-   begin		 
+   begin		
+      -- hold reset state for 100 ns.
+		imm <= "1000000010010";
+		wait for 40 ns;
+		imm <= "0000110010010";
+		wait for 40 ns;
+		imm <= "1110001110010";
+      -- insert stimulus here 
 
       wait;
    end process;

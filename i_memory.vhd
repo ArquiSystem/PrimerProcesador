@@ -31,7 +31,7 @@ use ieee.std_logic_unsigned.all;
 --use UNISIM.VComponents.all;
 
 entity i_memory is
-    Port ( address : in  STD_LOGIC_VECTOR (5 downto 0):=(others => '0');
+    Port ( address : in  STD_LOGIC_VECTOR (5 downto 0);
            rst : in  STD_LOGIC;
            instruction : out  STD_LOGIC_VECTOR (31 downto 0));
 end i_memory;
@@ -48,7 +48,7 @@ architecture Behavioral of i_memory is
 
 begin
 process(rst,ROM,address)
-	begin 
+	begin
 		if(rst = '1') then
 			instruction<="00000000000000000000000000000000";
 		else
@@ -57,4 +57,3 @@ process(rst,ROM,address)
 end process;
 	
 end Behavioral;
-

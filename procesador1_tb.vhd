@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   23:01:19 09/28/2017
+-- Create Date:   16:43:58 10/06/2017
 -- Design Name:   
--- Module Name:   C:/Users/equipo/Desktop/arquitectura/project/DataPath_tb.vhd
--- Project Name:  project
+-- Module Name:   C:/Users/utp/Desktop/procesador/procesador1/procesador1_tb.vhd
+-- Project Name:  procesador1
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: DataPath
+-- VHDL Test Bench Created by ISE for module: Procesador1
 -- 
 -- Dependencies:
 -- 
@@ -32,18 +32,18 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY DataPath_tb IS
-END DataPath_tb;
+ENTITY procesador1_tb IS
+END procesador1_tb;
  
-ARCHITECTURE behavior OF DataPath_tb IS 
+ARCHITECTURE behavior OF procesador1_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT DataPath
+    COMPONENT Procesador1
     PORT(
          clk : IN  std_logic;
          rst : IN  std_logic;
-         instruction : OUT  std_logic_vector(31 downto 0)
+         ALUresult : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
     
@@ -53,18 +53,18 @@ ARCHITECTURE behavior OF DataPath_tb IS
    signal rst : std_logic := '0';
 
  	--Outputs
-   signal instruction : std_logic_vector(31 downto 0);
+   signal ALUresult : std_logic_vector(31 downto 0);
 
    -- Clock period definitions
-   constant clk_period : time := 20 ns;
+   constant clk_period : time := 10 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: DataPath PORT MAP (
+   uut: Procesador1 PORT MAP (
           clk => clk,
           rst => rst,
-          instruction => instruction
+          ALUresult => ALUresult
         );
 
    -- Clock process definitions
@@ -79,7 +79,12 @@ BEGIN
 
    -- Stimulus process
    stim_proc: process
-   begin		 
+   begin		
+      -- hold reset state for 100 ns.
+		rst <= '1';
+		wait for 50 ns;
+		rst<= '0';
+      -- insert stimulus here 
 
       wait;
    end process;

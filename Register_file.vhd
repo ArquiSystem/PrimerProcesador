@@ -14,30 +14,27 @@ end Register_file;
 
 architecture Behavioral of Register_file is
 
-type ram_type is array (0 to 31) of std_logic_vector (31 downto 0); --2^15 x 8bits
+type ram_type is array (0 to 31) of std_logic_vector (31 downto 0); 
 			
-	 signal RAM: ram_type := (others => "00000000000000000000000000000000");
+	 signal RAM: ram_type := ("00000000000000000000000000000000",
+									  "10100000000000000010000000000001",
+									  "10100000000000000010000000010111",
+										others => "00000000000000000000000000000000");
 	 
-signal registro1 : std_logic_vector(31 downto 0);
-signal registro2 : std_logic_vector(31 downto 0);
-
 begin
 	
 	process(rst,rs1,rs2,rd,dwr,RAM)
 	begin
 	if rst = '1' then
-		RAM <= (others =>"00000000000000000000000000000000");
+		RAM <= (others => "00000000000000000000000000000000");
 		crs1 <= (others =>'0');
 		crs2 <= (others =>'0');
 	else
-		registro1 <= RAM(conv_integer(rs1));
-		registro2 <= RAM(conv_integer(rs2));
+		crs1 <= RAM(conv_integer(rs1));
+		crs2 <= RAM(conv_integer(rs2));
 		if rd /= "00000" then
 			RAM(conv_integer(rd)) <= dwr;
-			end if;
-		crs1 <= registro1;
-		crs2 <= registro2;
+		end if;
 	end if;
 	end process;
 end Behavioral;
-

@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -15,7 +14,7 @@ begin
 process(op,op3)
 begin
 	case op is
-	when "01" => ALUOP <= op3;
+	when "10" => ALUOP <= op3;
 	when others => ALUOP <= "000000";
 	end case;
 
