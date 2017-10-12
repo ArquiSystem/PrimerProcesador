@@ -1,11 +1,11 @@
-#PRIMER PROCESADOR
+# PRIMER PROCESADOR
 
 El objetivo del primer procesador es dejar la parte aritmetico logica funcionando
 cabe destacar que este procesador solo soporta  calculos con enteros   todos  las
 caracteristicas de esta primera arquitectura fueron hechas siguiendo el  estandar
 de la [arquitectura SPARC V8.](http://www.gaisler.com/doc/sparcv8.pdf)
 
-##Intrucciones que soporta la arquitectura
+## Intrucciones que soporta la arquitectura
 
 * Instrucciones logicas     --> OP => 10
   * AND   --> OP => 000001
