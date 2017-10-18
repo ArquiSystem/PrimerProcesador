@@ -1,14 +1,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
-ENTITY Mux_tb IS
-END Mux_tb;
+ENTITY MUX_MODULE_TB IS
+END MUX_MODULE_TB;
  
-ARCHITECTURE behavior OF Mux_tb IS 
+ARCHITECTURE behavior OF MUX_MODULE_TB IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT Mux
+    COMPONENT MUX_MODULE
     PORT(
          rs2 : IN  std_logic_vector(31 downto 0);
          data_SEU : IN  std_logic_vector(31 downto 0);
@@ -29,7 +29,7 @@ ARCHITECTURE behavior OF Mux_tb IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: Mux PORT MAP (
+   uut: MUX_MODULE PORT MAP (
           rs2 => rs2,
           data_SEU => data_SEU,
           i => i,

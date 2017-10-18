@@ -32,14 +32,14 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY ALU_TB IS
-END ALU_TB;
+ENTITY ALU_MODULE_TB IS
+END ALU_MODULE_TB;
  
-ARCHITECTURE behavior OF ALU_TB IS 
+ARCHITECTURE behavior OF ALU_MODULE_TB IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT ALU
+    COMPONENT ALU_MODULE
     PORT(
          DATA_I : IN  std_logic_vector(31 downto 0);
          DATA_II : IN  std_logic_vector(31 downto 0);
@@ -62,7 +62,7 @@ ARCHITECTURE behavior OF ALU_TB IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: ALU PORT MAP (
+   uut: ALU_MODULE PORT MAP (
           DATA_I => DATA_I,
           DATA_II => DATA_II,
           SELEC => SELEC,
@@ -71,37 +71,38 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-		SELEC<="000001";
+		SELEC<="000001";		--AND
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
       wait for 40 ns;	
-		SELEC<="000101";
+		SELEC<="000101";		--ANDN
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
       wait for 40 ns;	
-		SELEC<="000010";
+		SELEC<="000010";		--OR
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
       wait for 40 ns;	
-		SELEC<="000110";
+		SELEC<="000110";		--ORN
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
       wait for 40 ns;	
-		SELEC<="000011";
+		SELEC<="000011";		--XOR
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
       wait for 40 ns;	
-		SELEC<="000111";
+		SELEC<="000111";		--XORN
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
 		wait for 40 ns;	
-		SELEC<="000000";
+		SELEC<="000000";		--ADD
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
 		wait for 40 ns;	
-		SELEC<="000100";
+		SELEC<="000100";		--SUB
       DATA_I<=X"00000000";
 		DATA_II<=X"00000011";
+		wait;
    end process;
 
 END;

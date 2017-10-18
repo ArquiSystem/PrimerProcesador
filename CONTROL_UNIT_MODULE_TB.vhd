@@ -1,14 +1,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
-ENTITY ControlUnit_tb IS
-END ControlUnit_tb;
+ENTITY CONTROL_UNIT_MODULE_TB IS
+END CONTROL_UNIT_MODULE_TB;
  
-ARCHITECTURE behavior OF ControlUnit_tb IS 
+ARCHITECTURE behavior OF CONTROL_UNIT_MODULE_TB IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT ControlUnit
+    COMPONENT CONTROL_UNIT_MODULE
     PORT(
          op : IN  std_logic_vector(1 downto 0);
          op3 : IN  std_logic_vector(5 downto 0);
@@ -28,7 +28,7 @@ ARCHITECTURE behavior OF ControlUnit_tb IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: ControlUnit PORT MAP (
+   uut: CONTROL_UNIT_MODULE PORT MAP (
           op => op,
           op3 => op3,
           ALUOP => ALUOP
@@ -37,7 +37,7 @@ BEGIN
    -- Stimulus process
    stim_proc: process
    begin		
-      op <= "01";
+      op <= "10";
 		op3 <= "000000";
       wait for 10 ns;
 		op3 <= "000001";

@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.std_logic_unsigned.all;
 
-entity Register_file is
+entity REGISTER_FILE_MODULE is
     Port ( rs1 : in  STD_LOGIC_VECTOR (4 downto 0);
            rs2 : in  STD_LOGIC_VECTOR (4 downto 0);
            rd : in  STD_LOGIC_VECTOR (4 downto 0);
@@ -10,9 +10,9 @@ entity Register_file is
            dwr : in  STD_LOGIC_VECTOR (31 downto 0);
            crs1 : out  STD_LOGIC_VECTOR (31 downto 0);
            crs2 : out  STD_LOGIC_VECTOR (31 downto 0));
-end Register_file;
+end REGISTER_FILE_MODULE;
 
-architecture Behavioral of Register_file is
+architecture Behavioral of REGISTER_FILE_MODULE is
 
 type ram_type is array (0 to 31) of std_logic_vector (31 downto 0); 
 			

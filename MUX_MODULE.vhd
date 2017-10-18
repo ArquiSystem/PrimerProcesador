@@ -1,14 +1,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity Mux is
+entity MUX_MODULE is
     Port ( rs2 : in  STD_LOGIC_VECTOR (31 downto 0);
            data_SEU : in  STD_LOGIC_VECTOR (31 downto 0);
            i : in  STD_LOGIC;
            data_out : out  STD_LOGIC_VECTOR (31 downto 0));
-end Mux;
+end MUX_MODULE;
 
-architecture Behavioral of Mux is
+architecture Behavioral of MUX_MODULE is
 
 begin
 process(i, rs2, data_SEU)

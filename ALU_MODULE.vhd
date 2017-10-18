@@ -30,15 +30,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ALU is
+entity ALU_MODULE is
     Port ( DATA_I : in  STD_LOGIC_VECTOR (31 downto 0);
            DATA_II : in  STD_LOGIC_VECTOR (31 downto 0);
            SELEC : in  STD_LOGIC_VECTOR (5 downto 0);
 			  RESULT	: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
 			  );
-end ALU;
+end ALU_MODULE;
 
-architecture Behavioral of ALU is
+architecture Behavioral of ALU_MODULE is
 
 begin
 process (SELEC,DATA_I,DATA_II)
